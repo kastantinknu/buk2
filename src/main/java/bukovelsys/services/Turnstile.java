@@ -1,6 +1,8 @@
 package bukovelsys.services;
 
+import bukovelsys.cards.SkiPass;
 import bukovelsys.cards.SkiPassType;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +11,7 @@ public class Turnstile {
 
     private Map<SkiPassType, Integer> counterPassed = new HashMap<>();
     private Map<SkiPassType, Integer> counterCanceled = new HashMap<>();
-
+    private Validator validator = new Validator();
 
 
     public Turnstile() {
@@ -42,7 +44,18 @@ public class Turnstile {
 
     public void getStat(){
         //TODO fix this
-        System.out.println("Total passed: " + counterPassed.size() + "." + "Total canceled:" + counterCanceled.size());
+        int counterPass = 0;
+        int counterCansel = 0;
+
+        for(Map.Entry<SkiPassType, Integer> entry : counterPassed.entrySet()){
+
+        }
+
+        for (Map.Entry<SkiPassType, Integer> entry : counterCanceled.entrySet()){}
+
+
+
+        System.out.println("Total passed: " + counterPassed + "." + "Total canceled:" + counterCanceled );
 
     }
 
@@ -73,4 +86,10 @@ public class Turnstile {
         }
 
     }
+
+
+public boolean validate(SkiPass skiPass){
+        return this.validator.validator(skiPass);
+}
+
 }
