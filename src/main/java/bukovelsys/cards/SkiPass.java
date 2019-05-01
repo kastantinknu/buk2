@@ -10,7 +10,6 @@ public abstract class SkiPass {
     private LocalDate activationDate;
     protected Date expirationDate;
 
-
     public int getId() {
         return id;
     }
@@ -36,12 +35,9 @@ public abstract class SkiPass {
     }
 
     public void setBlocked(boolean blocked) {
+
         this.blocked = blocked;
     }
-
-   /*public void setActivationDate(Date activationDate) {
-        this.activationDate = activationDate;
-    }*/
 
 
 }

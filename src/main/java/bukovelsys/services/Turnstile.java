@@ -3,28 +3,23 @@ package bukovelsys.services;
 import bukovelsys.cards.SkiPass;
 import bukovelsys.cards.SkiPassType;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class Turnstile {
-
     private Map<SkiPassType, Integer> counterPassed = new HashMap<>();
     private Map<SkiPassType, Integer> counterCanceled = new HashMap<>();
     private Validator validator = new Validator();
-
 
     public Turnstile() {
         for (SkiPassType skiPassType : SkiPassType.values()){
             counterPassed.put(skiPassType, 0);
         }
+
         for (SkiPassType skiPassType : SkiPassType.values()){
             counterCanceled.put(skiPassType, 0);
         }
     }
-
-
-
 
     public Map<SkiPassType, Integer> getCounterPassed() {
         return counterPassed;
@@ -42,8 +37,7 @@ public class Turnstile {
         this.counterCanceled = counterCanceled;
     }
 
-    public void getStat(){
-        //TODO fix this
+    public void getStat(){ //TODO fix this
         int counterPass = 0;
         int counterCansel = 0;
 
@@ -51,22 +45,21 @@ public class Turnstile {
 
         }
 
-        for (Map.Entry<SkiPassType, Integer> entry : counterCanceled.entrySet()){}
+        for (Map.Entry<SkiPassType, Integer> entry : counterCanceled.entrySet()){
+            counterCansel = counterCansel + entry.getValue();
+        }
 
-
-
-        System.out.println("Total passed: " + counterPassed + "." + "Total canceled:" + counterCanceled );
+        System.out.println("Total passed: " + counterPass + "." + "Total canceled:" + counterCansel);
 
     }
 
     public void getStat(SkiPassType skiPassType){
-
         switch (skiPassType){
             case SEASON:
                 System.out.println("Total passed SEASON Skipass: " + counterPassed.get(skiPassType) + "." + "Total canceled SEASON Skipass:" + counterCanceled.get(skiPassType));
                 break;
             case DAY_LIMIT:
-                System.out.println("Total passed DAY_LIMIT Skipass: " + counterPassed.get(skiPassType) + "." + "Total canceled DAY_LIMIT Skipass:" + counterCanceled.get(skiPassType));
+                System.out.println("Total passed Daylimit Skipass: " + counterPassed.get(skiPassType) + "." + "Total canceled Daylimit Skipass:" + counterCanceled.get(skiPassType));
                 break;
             case HOLIDAY_DAY_LIMIT:
                 System.out.println("Total passed HOLIDAY_DAY_LIMIT Skipass: " + counterPassed.get(skiPassType) + "." + "Total canceled HOLIDAY_DAY_LIMIT Skipass:" + counterCanceled.get(skiPassType));
@@ -89,7 +82,7 @@ public class Turnstile {
 
 
 public boolean validate(SkiPass skiPass){
-        return this.validator.validator(skiPass);
+        return this.validator.validate(skiPass);
 }
 
 }

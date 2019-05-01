@@ -2,20 +2,15 @@ package bukovelsys.services;
 
 import bukovelsys.cards.*;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class AccountSystem {
 
     private List<SkiPass> skiPassList = new LinkedList<>();
-
     private int lastSkiPassId;
     private int startMonthOfSeason = 9 ;
     private int endMonthOfSeason = 4;
-
-
 
 
     private static  class AccountSystemHolder{
@@ -26,6 +21,7 @@ public class AccountSystem {
         return  AccountSystemHolder.ACCOUNT_SYSTEM_INSTANCE;
     }
 
+    //
     public SkiPass createHalfDayMorningSkiPass(){
         HalfDayMorningSkiPass skiPass = new HalfDayMorningSkiPass();
         skiPassList.add(skiPass);
@@ -35,7 +31,7 @@ public class AccountSystem {
 
 
 
-
+    //
     public SkiPass createHalfDayAfternoonSkiPass(){
 
         HalfDayAfternoonSkiPass skiPass = new HalfDayAfternoonSkiPass();
@@ -43,6 +39,8 @@ public class AccountSystem {
         return  skiPass;
 
     }
+
+    //
     public SkiPass createDaySkiPass(int days){
 
         DaySkiPass skiPass = new DaySkiPass(days);
@@ -50,6 +48,7 @@ public class AccountSystem {
         return  skiPass;
 
     }
+    //
     public SkiPass ceateHolidayHalfDayMorningSkiPass(){
 
         HolidayHalfDayMorningSkiPass skiPass = new HolidayHalfDayMorningSkiPass();
@@ -59,6 +58,7 @@ public class AccountSystem {
         return  skiPass;
 
     }
+    //
     public SkiPass ceateHolidayHalfDayAfternoonSkiPass(){
         HolidayHalfDayAfternoonSkiPass skiPass = new HolidayHalfDayAfternoonSkiPass();
         skiPassList.add(skiPass);
@@ -66,25 +66,28 @@ public class AccountSystem {
         return skiPass;
 
     }
-    public SkiPass createHolidaySkiPass(int days){
 
-        HolidaySkiPass skiPass = new HolidaySkiPass(days);
+    //
+    public SkiPass createHolidayDaySkiPass(int days){
+
+        HolidayDaySkiPass skiPass = new HolidayDaySkiPass(days);
         skiPassList.add(skiPass);
         return skiPass;
 
     }
+    //
     public SkiPass createSeasonSkiPass(){
         SeasonSkiPass skiPass = new SeasonSkiPass();
         skiPassList.add(skiPass);
         return skiPass;
 
     }
+
     public void blockSkiPass (SkiPass skiPass){
         skiPass.setBlocked(true);
     }
 
     public int getNextId(){
-
         return ++this.lastSkiPassId;
 
     }

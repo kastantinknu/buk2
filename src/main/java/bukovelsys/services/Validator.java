@@ -22,7 +22,7 @@ public class Validator {
                     sp.setLastWriteOffTime(LocalDate.now());
                     return true;
                 }
-                if (sp.getDayQuantity() > 0 && Duration.between(LocalDate.now(), sp.getLastWriteOffTime()).toDays() < 1)
+                if (sp.getDayQuantity() >= 0 && Duration.between(LocalDate.now(), sp.getLastWriteOffTime()).toDays() < 1)
                     return true;
                 if (sp.getDayQuantity() > 0 && Duration.between(LocalDate.now(), sp.getLastWriteOffTime()).toDays() >= 1) {
                     sp.setDayQuantity(sp.getDayQuantity() - 1);
@@ -30,16 +30,16 @@ public class Validator {
                     return true;
                 }
             }
-            if (sp.getDayQuantity() == 0 && Duration.between(LocalDate.now(), sp.getLastWriteOffTime()).t)
-
+            if (sp.getDayQuantity() == 0 && Duration.between(LocalDate.now(), sp.getLastWriteOffTime()).toDays() >= 1)
+                return false;
+        }
         }
 
 
         if (skiPass.getSkiPassType() == SkiPassType.HOLIDAY_HALF_DAY_MORNING) {
 
-            return false;
+
         }
-    }
         if(skiPass.getSkiPassType()==SkiPassType.HOLIDAY_HALF_DAY_AFTERNOON)
 
     {
@@ -52,12 +52,9 @@ public class Validator {
 
     {
     }
-        if(skiPass.getSkiPassType()==SkiPassType.HALF_DAY_MORNING)
-
-    {
+        if(skiPass.getSkiPassType()==SkiPassType.HALF_DAY_MORNING)    {
     }
-        if(skiPass.getSkiPassType()==SkiPassType.SEASON)
 
-    {
+        if(skiPass.getSkiPassType()==SkiPassType.SEASON){
     }
-}
+    }
