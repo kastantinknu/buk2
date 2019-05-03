@@ -55,6 +55,6 @@ public class Validator {
         if(skiPass.getSkiPassType()==SkiPassType.HALF_DAY_MORNING)    {
     }
 
-        if(skiPass.getSkiPassType()==SkiPassType.SEASON){
+        if(skiPass.getSkiPassType()== SkiPassType.SEASON){
     }
     }
